@@ -60,6 +60,20 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-cron"
+version = "0.6.0"
+description = "Running python crons in a Django project"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-cron-0.6.0.tar.gz", hash = "sha256:dc3c0d3433a2e4e7012f77f6d8415ad90367ba068649db2674325bc36f935841"},
+    {file = "django_cron-0.6.0-py3-none-any.whl", hash = "sha256:016203554748512b7f19d7363b4fde8741c6ff63fe8a15051f3031f4a0506a41"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "django-crontab"
 version = "0.7.1"
 description = "dead simple crontab powered job scheduling for django"
@@ -356,4 +370,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "a188eb6774e7b5cf63ddfbd20e32f45dcad898377b7c8f9806cfb9608a4c3ac4"
+content-hash = "7c5fb7100a280c5a4bf843cc7d8204e06d043efdf40278296dc6bdc2f3a35cbf"

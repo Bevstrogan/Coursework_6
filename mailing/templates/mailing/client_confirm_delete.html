@@ -8,7 +8,7 @@
 
 
 {% block content %}
-    {% if user.is_superuser or client.owner == request.user or perms.services.delete_client%}
+    {% if user.is_superuser or client.owner == request.user or perms.mailing.delete_client%}
         <div class="col-12">
                 <form class='row' method="post" enctype="multipart/form-data">
                     <div class="col-6">
@@ -27,6 +27,6 @@
                 </form>
         </div>
     {% else %}
-        У вас нету прав для удаления клиента "{{ client.fio }}"
+        У вас нету прав для удаления клиента "{{ client.full_name }}"
     {% endif %}
 {% endblock %}

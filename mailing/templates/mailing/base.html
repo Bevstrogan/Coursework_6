@@ -1,6 +1,6 @@
 {% load static %}
 
-<html lang="en" data-bs-theme="auto">
+<html lang="en" data-bs-theme="auto" xmlns:blog="http://www.w3.org/1999/xhtml">
   <head><script src="{% static 'js/color-modes.js' %}"></script>
     <title>SkyService</title>
     <link rel="stylesheet" href="{% static 'css/css@3.css' %}">
@@ -50,14 +50,14 @@
             <th>Дата публикации</th>
             <th>Ссылка на блог</th>
           </tr>
-<!--         {% for article in filtred_list %}-->
-<!--          <tr>-->
-<!--              <td>{{ article.title }}</td>-->
-<!--              <td>{{ article.description }}</td>-->
-<!--              <td>{{ article.published_date }}</td>-->
-<!--              <td><a href='#'> Перейти к блогу</a></td>-->
-<!--          </tr>-->
-<!--         {% endfor %}-->
+         {% for article in filtred_list %}
+          <tr>
+              <td>{{ article.title }}</td>
+              <td>{{ article.description }}</td>
+              <td>{{ article.published_date }}</td>
+              <td><a href="{% url 'blog:view' %} article.pk "> Перейти к блогу</a></td>
+          </tr>
+         {% endfor %}
       </table>
     </div>
   {% endblock  %}
