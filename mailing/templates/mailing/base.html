@@ -38,7 +38,7 @@
     </div>
     <div class="col-12 mb-5">
       <a href="{% url 'mailing:client_list' %}" class="btn btn-outline-primary">Список клиентов</a>
-      <a href="#" class="btn btn-outline-primary">Список сообщений</a>
+      <a href="{% url 'mailing:list_message' %}" class="btn btn-outline-primary">Список сообщений</a>
       <a href="#" class="btn btn-outline-primary">Список рассылок</a>
     </div>
     <div class="card-body">
@@ -61,41 +61,6 @@
       </table>
     </div>
   {% endblock  %}
-
-
-<!--  <footer class="pt-4 my-md-5 pt-md-5 border-top">-->
-<!--    <div class="row">-->
-<!--      <div class="col-6 col-md">-->
-<!--        <h5>Features</h5>-->
-<!--        <ul class="list-unstyled text-small">-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--      <div class="col-6 col-md">-->
-<!--        <h5>Resources</h5>-->
-<!--        <ul class="list-unstyled text-small">-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--      <div class="col-6 col-md">-->
-<!--        <h5>About</h5>-->
-<!--        <ul class="list-unstyled text-small">-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>-->
-<!--          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </footer>-->
 </div>
 <script src="{% static 'js/bundle.min.js' %}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

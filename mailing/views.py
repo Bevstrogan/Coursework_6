@@ -3,8 +3,8 @@ from django.http import Http404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DetailView, DeleteView
 
-from mailing.forms import ClientForm
-from mailing.models import Client
+from mailing.forms import ClientForm, MessageForm
+from mailing.models import Client, Message
 
 
 class Homepage(TemplateView):
@@ -65,4 +65,52 @@ class ClientDetailView(DetailView, LoginRequiredMixin):
 class ClientDeleteView(DeleteView, LoginRequiredMixin):
     model = Client
     success_url = reverse_lazy("mailing:client_list")
+    login_url = "users:login"
+
+
+class MessageCreateView(LoginRequiredMixin,CreateView):
+    model = Message
+    form_class = MessageForm
+    success_url = reverse_lazy("mailing:list_message")
+    login_url = "users:login"
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+
+        return super().form_valid(form)
+
+
+class MessageUpdateView(UpdateView, LoginRequiredMixin):
+    model = Message
+    fields = ("subject", "body",)
+    success_url = reverse_lazy("mailing:list_message")
+    login_url = "users:login"
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.object.owner != self.request.user:
+            raise Http404
+        return self.object
+
+
+class MessageListView(ListView, LoginRequiredMixin):
+    model = Message
+    success_url = reverse_lazy("mailing:list_message")
+    login_url = "users:login"
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        context_data["message_list"] = Message.objects.all()
+        return context_data
+
+
+class MessageDetailView(DetailView):
+    model = Message
+
+
+class MessageDeleteView(DeleteView, LoginRequiredMixin):
+    model = Message
+    success_url = reverse_lazy("mailing:list_message")
     login_url = "users:login"
