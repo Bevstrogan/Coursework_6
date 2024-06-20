@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DetailView, DeleteView
 
 from mailing.forms import ClientForm, MessageForm, NewsletterForm
-from mailing.models import Client, Message, Newsletter
+from mailing.models import Client, Message, Newsletter, Logs
 
 
 class Homepage(TemplateView):
@@ -179,3 +179,17 @@ class NewsletterDeleteView(DeleteView, LoginRequiredMixin):
     model = Newsletter
     success_url = reverse_lazy("mailing:list_newsletter")
     login_url = 'users:login'
+
+
+class LogsListView(LoginRequiredMixin,ListView):
+    model = Logs
+    success_url = reverse_lazy('mailing:logs_list')
+    login_url = 'users:login'
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        context_data['total'] = Logs.objects.all()
+        context_data['total_count'] = Logs.objects.all().count()
+        context_data['successful_count'] = Logs.objects.filter(attempt=True).count()
+        context_data['unsuccessful_count'] = Logs.objects.filter(attempt=False).count()
+        return context_data
