@@ -5,8 +5,8 @@
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         <a class="link-body-emphasis text-decoration-none" href="{% url 'mailing:home' %}"><button>Главная</button></a>
         <a class="link-body-emphasis text-decoration-none" href="{% url 'mailing:client_list' %}"><button>Клиенты</button></a>
-        <a class="link-body-emphasis text-decoration-none" href="#"><button>Рассылки</button></a>
-        <a class="link-body-emphasis text-decoration-none" href="#"><button>Создать рассылку</button></a>
+        <a class="link-body-emphasis text-decoration-none" href="{% url 'mailing:list_newsletter' %}"><button>Рассылки</button></a>
+        <a class="link-body-emphasis text-decoration-none" href="{% url 'mailing:create_newsletter' %}"><button>Создать рассылку</button></a>
         <a class="link-body-emphasis text-decoration-none" href="#"><button>Отчет проведенных рассылок отдельно</button></a>
         {% if user.is_authenticated %}
            {% if perms.users.change_user %}
